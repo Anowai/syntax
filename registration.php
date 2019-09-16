@@ -3,10 +3,9 @@
 $name = $_POST["username"];
 $email = $_POST["email"];
 $password = $_POST["password"];
-$password2 = $_POST["password2"];
 
 
-if (!empty($name) || !empty($email) || !empty($password) || !empty($password2)) {
+if (!empty($name) || !empty($email) || !empty($password)) {
 	$host = "localhost";
 	$dbUsername = "root";
 	$dbPassword = "";
@@ -18,7 +17,7 @@ if (!empty($name) || !empty($email) || !empty($password) || !empty($password2)) 
 		die('Connect Error('. mysqli_connect_error().')'. mysql_connect());
 	}	else {
 			$SELECT = "SELECT email from login Where email = ? Limit 1";
-			$INSERT = "INSERT Into login (username, email, password, password2) values(?, ?, ?, ?)";
+			$INSERT = "INSERT Into login (username, email, password) values(?, ?, ?)";
 
 			$stmt = $conn->prepare($SELECT);
 			$stmt->bind_param("s", $email);
@@ -31,7 +30,7 @@ if (!empty($name) || !empty($email) || !empty($password) || !empty($password2)) 
 				$stmt->close();
 
 				$stmt = $conn->prepare($INSERT);
-				$stmt->bind_param("ssss", $username, $email, $password, $password2);
+				$stmt->bind_param("sss", $username, $email, $password);
 				$stmt->execute();
 				echo "Welcome $name";
 			}else {

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $name = $_POST["username"];
 $email = $_POST["email"];
@@ -33,7 +33,7 @@ if (!empty($name) || !empty($email) || !empty($password) || !empty($password2)) 
 				$stmt = $conn->prepare($INSERT);
 				$stmt->bind_param("ssss", $username, $email, $password, $password2);
 				$stmt->execute();
-				echo "New record inserted successfully";
+				echo "Welcome $name";
 			}else {
 				echo "Someone already register using this email";
 			}

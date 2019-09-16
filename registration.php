@@ -34,7 +34,7 @@ if (!empty($name) || !empty($email) || !empty($password)) {
 				$stmt->execute();
 				echo "Welcome $name";
 			}else {
-				echo "Someone already register using this email";
+				echo "Someone already register using $email";
 			}
 			$stmt->close();
 			$conn->close();

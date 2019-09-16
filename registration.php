@@ -16,8 +16,8 @@ if (!empty($name) || !empty($email) || !empty($password)) {
 	if (mysqli_connect_error()) {
 		die('Connect Error('. mysqli_connect_error().')'. mysql_connect());
 	}	else {
-			$SELECT = "SELECT email from login Where email = ? Limit 1";
-			$INSERT = "INSERT Into login (username, email, password) values(?, ?, ?)";
+			$SELECT = "SELECT email from syntax Where email = ? Limit 1";
+			$INSERT = "INSERT Into syntax (username, email, password) values(?, ?, ?)";
 
 			$stmt = $conn->prepare($SELECT);
 			$stmt->bind_param("s", $email);
